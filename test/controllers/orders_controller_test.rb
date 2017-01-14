@@ -13,11 +13,11 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
   test "requires item in cart" do
     get new_order_url
     assert_redirected_to store_index_path
-    assert_equal flash[:notice], 'You cart is empty'
+    assert_equal flash[:notice], 'Your cart is empty'
   end
 
   test "should get new" do
-    post line_items_url, params: { products_id: products(:ruby).id }
+    post line_items_url, params: { product_id: products(:ruby).id }
 
     get new_order_url
     assert_response :success
@@ -44,7 +44,8 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update order" do
-    patch order_url(@order), params: { order: { address: @order.address, email: @order.email, name: @order.name, pay_type: @order.pay_type } }
+    patch order_url(@order), params: { order: { address: @order.address,
+      email: @order.email, name: @order.name, pay_type: @order.pay_type } }
     assert_redirected_to order_url(@order)
   end
 
