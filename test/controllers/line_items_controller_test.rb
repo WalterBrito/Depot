@@ -22,8 +22,8 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
 
     follow_redirect!
 
-    assert_select 'h2', 'Your Cart'
-    assert_select 'td', "Programming Ruby 1.9"
+    assert_select 'h2', 'Your Cart'                   # Have an error on this line
+    assert_select 'td', "Programming Ruby 1.9"        # Have an error on this line
   end
 
   test "should show line_item" do
